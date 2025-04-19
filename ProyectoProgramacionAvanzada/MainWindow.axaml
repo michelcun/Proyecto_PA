@@ -1,0 +1,14 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="ProyectoProgramacionAvanzada.MainWindow"
+        Width="400" Height="250"
+        Title="Proyecto Programación Avanzada">
+    <StackPanel Margin="20">
+        <TextBlock Text="Ingresa tu nombre:"/>
+        <TextBox Name="InputNombre" Margin="0,5,0,10"/>
+        <TextBlock Text="Ingresa tu Apellido:"/>
+        <TextBox Name="InputApellido" Margin="0,5,0,10"/>
+        <Button Content="Saludar" Click="Saludar_Click"/>
+        <TextBlock Name="MensajeBienvenida" Margin="0,20,0,0" FontWeight="Bold"/>
+    </StackPanel>
+</Window>
