@@ -1,14 +1,15 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="ProyectoProgramacionAvanzada.MainWindow"
-        Width="400" Height="250"
-        Title="Proyecto Programación Avanzada">
+        Title="Registro de Paciente"
+        Width="400" Height="450">
     <StackPanel Margin="20">
-        <TextBlock Text="Ingresa tu nombre:"/>
-        <TextBox Name="InputNombre" Margin="0,5,0,10"/>
-        <TextBlock Text="Ingresa tu Apellido:"/>
-        <TextBox Name="InputApellido" Margin="0,5,0,10"/>
-        <Button Content="Saludar" Click="Saludar_Click"/>
-        <TextBlock Name="MensajeBienvenida" Margin="0,20,0,0" FontWeight="Bold"/>
+        <TextBox x:Name="NombreTextBox" Watermark="Nombre" Margin="0,0,0,5"/>
+        <TextBox x:Name="ApellidoTextBox" Watermark="Apellido" Margin="0,0,0,5"/>
+        <TextBox x:Name="DocumentoTextBox" Watermark="Documento" Margin="0,0,0,5"/>
+        <TextBox x:Name="EmailTextBox" Watermark="Email" Margin="0,0,0,5"/>
+        <TextBox x:Name="TelefonoTextBox" Watermark="Teléfono" Margin="0,0,0,5"/>
+        <TextBox x:Name="FechaNacimientoTextBox" Watermark="Fecha de Nacimiento (YYYY-MM-DD)" Margin="0,0,0,5"/>
+        <Button Content="Guardar" Click="GuardarButton_Click" Margin="0,0,0,10"/>
     </StackPanel>
-</Window>
+ </Window>
