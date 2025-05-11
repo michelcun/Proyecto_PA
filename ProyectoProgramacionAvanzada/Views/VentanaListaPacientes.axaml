@@ -1,0 +1,16 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="ProyectoProgramacionAvanzada.Views.VentanaPaciente"
+    Title="Registro de Paciente"
+    Width="480" Height="450">
+    <StackPanel Margin="20">
+        <TextBox x:Name="NombreTextBox" Watermark="Nombre" Margin="0,0,0,5"/>
+        <TextBox x:Name="ApellidoTextBox" Watermark="Apellido" Margin="0,0,0,5"/>
+        <TextBox x:Name="DocumentoTextBox" Watermark="Documento" Margin="0,0,0,5"/>
+        <TextBox x:Name="EmailTextBox" Watermark="Email" Margin="0,0,0,5"/>
+        <TextBox x:Name="TelefonoTextBox" Watermark="Teléfono" Margin="0,0,0,5"/>
+        <TextBox x:Name="FechaNacimientoTextBox" Watermark="Fecha de Nacimiento (YYYY-MM-DD)" Margin="0,0,0,5"/>
+        <Button Content="Guardar" Click="GuardarButton_Click" Margin="0,0,0,10"/>
+    </StackPanel>
+ </Window>
