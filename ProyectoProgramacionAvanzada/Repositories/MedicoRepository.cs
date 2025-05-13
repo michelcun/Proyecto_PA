@@ -1,34 +1,31 @@
-using MySql.Data.MySqlClient;
 using ProyectoProgramacionAvanzada.Data;
 using ProyectoProgramacionAvanzada.Models;
+using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 
 namespace ProyectoProgramacionAvanzada.Repositories
 {
     public class MedicoRepository
     {
-        private readonly ConexionMySQL conexion;
+        private readonly MySqlConnection conexion;
 
-        public MedicoRepository()
+        public MedicoRepository(MySqlConnection conexion)
         {
-            conexion = new ConexionMySQL();
+            this.conexion = conexion;
         }
 
         public void AgregarMedico(Medico medico)
         {
-            using (var conn = conexion.ObtenerConexion())
+            var query = @"INSERT INTO medico (nombre, correo, consultorio, especialidad_id)
+                          VALUES (@nombre, @correo, @consultorio, @especialidad_id)";
+
+            using (var cmd = new MySqlCommand(query, conexion))
             {
-                var query = "INSERT INTO medico (nombre, especialidad_id, correo, telefono) " +
-                            "VALUES (@nombre, @especialidad_id, @correo, @telefono)";
-
-                using (var cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@nombre", medico.Nombre);
-                    cmd.Parameters.AddWithValue("@especialidad_id", medico.EspecialidadId);
-                    cmd.Parameters.AddWithValue("@correo", medico.Correo);
-                    cmd.Parameters.AddWithValue("@telefono", medico.Telefono);
-
-                    cmd.ExecuteNonQuery();
-                }
+                cmd.Parameters.AddWithValue("@nombre", medico.Nombre);
+                cmd.Parameters.AddWithValue("@correo", medico.Correo);
+                cmd.Parameters.AddWithValue("@consultorio", medico.Consultorio);
+                cmd.Parameters.AddWithValue("@especialidad_id", medico.EspecialidadId);
+                cmd.ExecuteNonQuery();
             }
         }
     }

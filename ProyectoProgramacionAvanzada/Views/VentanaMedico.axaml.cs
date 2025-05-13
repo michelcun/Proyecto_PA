@@ -2,46 +2,41 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using ProyectoProgramacionAvanzada.Models;
 using ProyectoProgramacionAvanzada.Repositories;
+using ProyectoProgramacionAvanzada.Data;
 using System;
+using MySql.Data.MySqlClient;
 
-namespace ProyectoProgramacionAvanzada
+namespace ProyectoProgramacionAvanzada.Views
 {
-    public partial class MainWindow : Window
+    public partial class VentanaMedico : Window
     {
-        public MainWindow()
+        public VentanaMedico()
         {
             InitializeComponent();
         }
 
-        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        private void GuardarButton_Click(object? sender, RoutedEventArgs e)
         {
-            // Obtener datos de los campos
             var nombre = NombreTextBox.Text;
-            var apellido = ApellidoTextBox.Text;
-            var documento = DocumentoTextBox.Text;
-            var email = EmailTextBox.Text;
-            var telefono = TelefonoTextBox.Text;
-            DateTime fechaNacimiento;
-            DateTime.TryParse(FechaNacimientoTextBox.Text, out fechaNacimiento);
+            var correo = CorreoTextBox.Text;
+            var consultorio = ConsultorioTextBox.Text;
 
-
-            // Crear objeto Paciente
-            var nuevoPaciente = new Paciente
+            var nuevoMedico = new Medico
             {
                 Nombre = nombre,
-                Apellido = apellido,
-                Documento = documento,
-                Email = email,
-                Telefono = telefono,
-                FechaNacimiento = fechaNacimiento
+                Correo = correo,
+                Consultorio = consultorio
             };
 
-            // Guardar en la base de datos
-            var repo = new PacienteRepository();
-            repo.AgregarPaciente(nuevoPaciente);
+            var conexion = new MySqlConnection();
+            var repo = new MedicoRepository(conexion);
+            repo.AgregarMedico(nuevoMedico);
 
-            // Confirmación por consola
-            Console.WriteLine("Paciente guardado correctamente.");
+            Console.WriteLine("Médico guardado correctamente.");
+        }
+        private void CerrarButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

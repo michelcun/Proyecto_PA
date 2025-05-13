@@ -1,14 +1,17 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using ProyectoProgramacionAvanzada.Models;
+using ProyectoProgramacionAvanzada.Data;
 using ProyectoProgramacionAvanzada.Repositories;
 using System;
 
-namespace ProyectoProgramacionAvanzada
+
+
+namespace ProyectoProgramacionAvanzada.Views
 {
-    public partial class MainWindow : Window
+    public partial class VentanaPaciente : Window
     {
-        public MainWindow()
+        public VentanaPaciente()
         {
             InitializeComponent();
         }
@@ -21,9 +24,7 @@ namespace ProyectoProgramacionAvanzada
             var documento = DocumentoTextBox.Text;
             var email = EmailTextBox.Text;
             var telefono = TelefonoTextBox.Text;
-            DateTime fechaNacimiento;
-            DateTime.TryParse(FechaNacimientoTextBox.Text, out fechaNacimiento);
-
+            DateTime.TryParse(FechaNacimientoTextBox.Text, out var fechaNacimiento);
 
             // Crear objeto Paciente
             var nuevoPaciente = new Paciente
@@ -37,11 +38,24 @@ namespace ProyectoProgramacionAvanzada
             };
 
             // Guardar en la base de datos
-            var repo = new PacienteRepository();
+            var conexion = new ConexionMySQL();
+            var repo = new PacienteRepository(conexion);
             repo.AgregarPaciente(nuevoPaciente);
 
-            // Confirmación por consola
+            // Limpiar campos
+            NombreTextBox.Text = "";
+            ApellidoTextBox.Text = "";
+            DocumentoTextBox.Text = "";
+            EmailTextBox.Text = "";
+            TelefonoTextBox.Text = "";
+            FechaNacimientoTextBox.Text = "";
+
+            // Confirmación
             Console.WriteLine("Paciente guardado correctamente.");
+        }
+        private void CerrarButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

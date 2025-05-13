@@ -1,6 +1,8 @@
-namespace ProyectoProgramacionAvanzada.Models;
-
-public class Especialidad
+namespace ProyectoProgramacionAvanzada.Models
 {
-    
+    public class Especialidad
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; } = string.Empty;
+    }
 }
