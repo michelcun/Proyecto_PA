@@ -7,26 +7,53 @@ namespace ProyectoProgramacionAvanzada.Repositories
 {
     public class MedicoRepository
     {
-        private readonly MySqlConnection conexion;
+        private readonly ConexionMySQL _conexion;
 
-        public MedicoRepository(MySqlConnection conexion)
+        public MedicoRepository(ConexionMySQL conexion)
         {
-            this.conexion = conexion;
+            _conexion = conexion;
         }
 
         public void AgregarMedico(Medico medico)
         {
-            var query = @"INSERT INTO medico (nombre, correo, consultorio, especialidad_id)
-                          VALUES (@nombre, @correo, @consultorio, @especialidad_id)";
-
-            using (var cmd = new MySqlCommand(query, conexion))
+            using (var conn = _conexion.ObtenerConexion())
             {
-                cmd.Parameters.AddWithValue("@nombre", medico.Nombre);
-                cmd.Parameters.AddWithValue("@correo", medico.Correo);
-                cmd.Parameters.AddWithValue("@consultorio", medico.Consultorio);
-                cmd.Parameters.AddWithValue("@especialidad_id", medico.EspecialidadId);
-                cmd.ExecuteNonQuery();
+                var query = "INSERT INTO medico (nombre, email, consultorio) " +
+                            "VALUES (@nombre, @email, @consultorio)";
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nombre", medico.Nombre);
+                    cmd.Parameters.AddWithValue("@email", medico.Correo);
+                    cmd.Parameters.AddWithValue("@consultorio", medico.Consultorio);
+
+                    cmd.ExecuteNonQuery();
+                }
             }
+        }
+
+        public List<Medico> ObtenerTodos()
+        {
+            var lista = new List<Medico>();
+
+            using (var conn = _conexion.ObtenerConexion())
+            {
+                var cmd = new MySqlCommand("SELECT nombre, email, consultorio FROM medico", conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(new Medico
+                        {
+                            Nombre = reader.GetString(0),
+                            Correo = reader.GetString(1),
+                            Consultorio = reader.GetString(2)
+                        });
+                    }
+                }
+            }
+
+            return lista;
         }
     }
 }
