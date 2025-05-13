@@ -2,18 +2,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="ProyectoProgramacionAvanzada.Views.VentanaListaPacientes"
         Title="Lista de Pacientes"
-        Width="800" Height="400">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <DataGrid x:Name="PacientesGrid" 
-                  AutoGenerateColumns="True" 
-                  Grid.Row="0"
-                  Margin="10"/>
-        <StackPanel Grid.Row="1">
-            <Button Content="Cerrar" Click="CerrarButton_Click" Margin="10"/>
-        </StackPanel>
-    </Grid>
+        Width="800" Height="600">
+
+    <StackPanel Margin="10">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="500">
+            <TextBox x:Name="PacientesTextBox"
+                     AcceptsReturn="True"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"/>
+        </ScrollViewer>
+
+        <Button Content="Cerrar" Click="CerrarButton_Click"/>
+    </StackPanel>
 </Window>
