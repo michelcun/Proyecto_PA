@@ -23,10 +23,10 @@ namespace ProyectoProgramacionAvanzada.Views
                 var repo = new PacienteRepository(conexion);
                 List<Paciente> pacientes = repo.ObtenerTodos();
 
-                PacientesTextBox.Text = "Pacientes encontrados: " + pacientes.Count + Environment.NewLine;
+                PacientesTextBox.Text = "Pacientes Registrados: " + pacientes.Count + Environment.NewLine ;
                 foreach (var paciente in pacientes)
                 {
-                    PacientesTextBox.Text += $"{paciente.Nombre} {paciente.Apellido}\n";
+                    PacientesTextBox.Text += $"{paciente.Nombre} {paciente.Apellido}  | {paciente.Documento} {paciente.Telefono}  | {paciente.Email} | {paciente.FechaNacimiento}\n \n";
                 }
             }
             catch (Exception ex)
