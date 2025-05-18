@@ -38,16 +38,17 @@ namespace ProyectoProgramacionAvanzada.Repositories
 
             using (var conn = _conexion.ObtenerConexion())
             {
-                var cmd = new MySqlCommand("SELECT nombre, email, consultorio FROM medico", conn);
+                var cmd = new MySqlCommand("SELECT id, nombre, email, consultorio FROM medico", conn);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         lista.Add(new Medico
                         {
-                            Nombre = reader.GetString(0),
-                            Correo = reader.GetString(1),
-                            Consultorio = reader.GetString(2)
+                            Id = reader.GetInt32(0),
+                            Nombre = reader.GetString(1),
+                            Correo = reader.GetString(2),
+                            Consultorio = reader.GetString(3)
                         });
                     }
                 }

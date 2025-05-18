@@ -10,5 +10,12 @@ namespace ProyectoProgramacionAvanzada.Models
         public string Email { get; set; } = string.Empty;
         public string Telefono { get; set; } = string.Empty;
         public DateTime FechaNacimiento { get; set; }
+        public object Id { get; set; }
+        
+        public override string ToString()
+        {
+            return $"{Nombre} {Apellido}";
+        }
+        
     }
 }

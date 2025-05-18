@@ -27,5 +27,10 @@ public partial class MainWindow : Window
         var listaPacientes = new VentanaListaPacientes();
         listaPacientes.Show();
     }
+    private void AbrirVentanaCita_Click(object? sender, RoutedEventArgs e)
+    {
+        var ventanaCita = new VentanaCita();
+        ventanaCita.Show();
+    }
 
 }

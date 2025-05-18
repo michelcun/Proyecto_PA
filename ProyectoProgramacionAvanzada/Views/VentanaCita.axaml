@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="ProyectoProgramacionAvanzada.Views.VentanaCita"
+        Title="Registrar Cita"
+        Width="400" Height="500">
+
+    <StackPanel Margin="10" Spacing="10">
+        <TextBlock Text="Seleccionar Paciente" />
+        <ComboBox x:Name="PacientesComboBox" Width="250" Height="30" />
+
+        <TextBlock Text="Seleccionar Médico" />
+        <ComboBox x:Name="MedicosComboBox" Width="250" Height="30" />
+
+        <TextBlock Text="Fecha de la Cita" />
+        <DatePicker x:Name="FechaDatePicker" />
+
+        <TextBlock Text="Hora" />
+        <TextBox x:Name="HoraTextBox" Width="250" Height="30" />
+
+        <TextBlock Text="Motivo" />
+        <TextBox x:Name="MotivoTextBox" Width="250" Height="30" />
+
+        <TextBlock Text="Estado" />
+        <TextBox x:Name="EstadoTextBox" Width="250" Height="30" />
+
+        <Button Content="Guardar Cita" Click="GuardarButton_Click" Margin="0,10,0,0"/>
+        <Button Content="Cerrar" Click="CerrarButton_Click"/>
+    </StackPanel>
+</Window>

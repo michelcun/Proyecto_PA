@@ -41,19 +41,20 @@ namespace ProyectoProgramacionAvanzada.Repositories
 
             using (var conn = _conexion.ObtenerConexion())
             {
-                var cmd = new MySqlCommand("SELECT nombre, apellido, documento, email, telefono, fecha_nacimiento FROM paciente", conn);
+                var cmd = new MySqlCommand("SELECT id, nombre, apellido, documento, email, telefono, fecha_nacimiento FROM paciente", conn);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         lista.Add(new Paciente
                         {
-                            Nombre = reader.GetString(0),
-                            Apellido = reader.GetString(1),
-                            Documento = reader.GetString(2),
-                            Email = reader.GetString(3),
-                            Telefono = reader.GetString(4),
-                            FechaNacimiento = reader.GetDateTime(5)
+                            Id = reader.GetInt32(0), // 👈 Importante para que se guarde el paciente_id
+                            Nombre = reader.GetString(1),
+                            Apellido = reader.GetString(2),
+                            Documento = reader.GetString(3),
+                            Email = reader.GetString(4),
+                            Telefono = reader.GetString(5),
+                            FechaNacimiento = reader.GetDateTime(6)
                         });
                     }
                 }
@@ -61,5 +62,6 @@ namespace ProyectoProgramacionAvanzada.Repositories
 
             return lista;
         }
+
     }
 }
