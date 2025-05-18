@@ -33,4 +33,10 @@ public partial class MainWindow : Window
         ventanaCita.Show();
     }
 
+    private void AbrirListaCitas_Click(object? sender, RoutedEventArgs e)
+    {
+        var ventana = new VentanaListaCitas();
+        ventana.ShowDialog(this);
+    }
+
 }

@@ -48,7 +48,7 @@ namespace ProyectoProgramacionAvanzada.Repositories
                     {
                         lista.Add(new Paciente
                         {
-                            Id = reader.GetInt32(0), // 👈 Importante para que se guarde el paciente_id
+                            Id = reader.GetInt32(0),
                             Nombre = reader.GetString(1),
                             Apellido = reader.GetString(2),
                             Documento = reader.GetString(3),

@@ -33,14 +33,14 @@ namespace ProyectoProgramacionAvanzada.Views
                 var repo = new MedicoRepository(conexion);
                 repo.AgregarMedico(nuevoMedico);
 
-                Console.WriteLine("✅ Médico guardado correctamente en la base de datos.");
+                Console.WriteLine("OK: Médico guardado correctamente en la base de datos.");
 
                 // Limpiar los campos
                 ResetCampos();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Error al guardar el médico: {ex.Message}");
+                Console.WriteLine($"Error: Error al guardar el médico: {ex.Message}");
             }
         }
 

@@ -7,6 +7,7 @@
     <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
   <TextBlock Text="Gestión de Reservas Médicas" FontSize="18" HorizontalAlignment="Center"/>
         <Button Content="Registrar Cita" Click="AbrirVentanaCita_Click" Margin="0,5"/>
+        <Button Content="Ver Citas" Click="AbrirListaCitas_Click" Margin="0,10,0,0"/>
         <Button Content="Gestionar Pacientes" Click="AbrirVentanaPaciente_Click"/>
         <Button Content="Gestionar Médicos" Click="AbrirVentanaMedico_Click"/>
         <Button Content="Ver Pacientes" Click="AbrirListaPacientes_Click" />
