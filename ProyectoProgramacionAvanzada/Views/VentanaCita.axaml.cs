@@ -4,7 +4,7 @@ using ProyectoProgramacionAvanzada.Data;
 using ProyectoProgramacionAvanzada.Models;
 using ProyectoProgramacionAvanzada.Repositories;
 using System;
-using System.Collections.Generic;
+
 
 namespace ProyectoProgramacionAvanzada.Views
 {
@@ -47,7 +47,7 @@ namespace ProyectoProgramacionAvanzada.Views
 
                 if (paciente == null || medico == null || fechaOffset == null)
                 {
-                    Console.WriteLine("❌ Debes seleccionar un paciente, un médico y una fecha.");
+                    Console.WriteLine("Error: Debes seleccionar un paciente, un médico y una fecha.");
                     return;
                 }
 
@@ -55,7 +55,7 @@ namespace ProyectoProgramacionAvanzada.Views
                 {
                     PacienteId = paciente.Id,
                     MedicoId = medico.Id,
-                    Fecha = fechaOffset.Value.DateTime, // ✅ conversión segura
+                    Fecha = fechaOffset.Value.DateTime, // conversión segura
                     Hora = HoraTextBox.Text,
                     Motivo = MotivoTextBox.Text,
                     Estado = EstadoTextBox.Text
@@ -65,12 +65,12 @@ namespace ProyectoProgramacionAvanzada.Views
                 var repo = new CitaRepository(conexion);
                 repo.AgregarCita(cita);
 
-                Console.WriteLine("✅ Cita guardada correctamente.");
+                Console.WriteLine("Ok: Cita guardada correctamente.");
                 LimpiarCampos();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("❌ Error al guardar la cita:");
+                Console.WriteLine("Error: Error al guardar la cita:");
                 Console.WriteLine(ex);
             }
         }

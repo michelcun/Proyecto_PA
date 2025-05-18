@@ -31,6 +31,7 @@ namespace ProyectoProgramacionAvanzada.Views
                 {
                     sb.AppendLine($"📅 Cita ID: {cita.Id}");
                     sb.AppendLine($"👤 Paciente ID: {cita.PacienteId}");
+                    sb.AppendLine($"👤 Paciente: {cita.NombrePaciente})");
                     sb.AppendLine($"🩺 Médico ID: {cita.MedicoId}");
                     sb.AppendLine($"🗓 Fecha: {cita.Fecha:dd/MM/yyyy}");
                     sb.AppendLine($"🕒 Hora: {cita.Hora}");

@@ -11,5 +11,6 @@ namespace ProyectoProgramacionAvanzada.Models
         public int MedicoId { get; set; }
         public object Hora { get; set; }
         public string? Estado { get; set; }
+        public string NombrePaciente { get; set; } = string.Empty;
     }
 }
